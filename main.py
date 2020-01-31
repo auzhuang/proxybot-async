@@ -298,14 +298,13 @@ class WebProxy(Base):
 		try:
 			timeout = aiohttp.ClientTimeout(total=10)
 			async with aiohttp.ClientSession(timeout=timeout) as session:
-				# session.post('http://httpbin.org/post', data=data, headers=headers)
 				if self.request.method == 'GET':
-					async with session.get(url, headers=headers, allow_redirects=False) as r:
+					async with session.get(url, headers=headers, allow_redirects=False, timeout=timeout) as r:
 						resp = {"status":r.status, "headers":r.headers, "content":await r.read(), 'encoding':r.get_encoding()}
 				else:
-					async with session.post(url, data=self.request.body, headers=headers, allow_redirects=False) as r:
+					async with session.post(url, data=self.request.body, headers=headers, allow_redirects=False, timeout=timeout) as r:
 						resp = {"status":r.status, "headers":r.headers, "content":await r.read(), 'encoding':r.get_encoding()}					
-
+				await session.close()
 				if self.if_should_cached(url):
 					await self.save_cache(url, resp)
 				return resp, ''

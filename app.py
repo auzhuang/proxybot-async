@@ -15,4 +15,4 @@ app.add_route(Block.as_view(), '/block')
 app.add_route(SaveGAEOlderLink.as_view(), '/cc/<path:path>')
 app.add_route(globals()[config.EnabledWebProxy].as_view(), '/<path:path>')
 
-app.run(host="127.0.0.1", debug=True, access_log=False, port=9000, workers=2)
+app.run(host="127.0.0.1", debug=False, access_log=True, port=9000, workers=2)
