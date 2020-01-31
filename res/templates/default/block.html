@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+{% include 'head.html' %}
+<title>Free web proxy Service - ProxyBot</title>
+</head>
+<body>
+{% include 'navbar.html' %}
+
+
+
+
+<div class="container">
+<h2>How ProxyBot/ProxyBot Crawls Your Site</h2>
+ProxyBot’s crawl process starts with a list of webpage URLs. When ProxyBot visits these URLs, it saves hyperlinks from the page for further crawling. This list, also known as the "crawl frontier", is repeatedly visited according to a set of ProxyBot policies to effectively map a site for updates: content changes, new pages, and dead links.
+
+<br/><br/><br/>
+<h2>How To Block ProxyBot From Crawling Your Site</h2>
+
+<h3 style="color: green">A. robots.txt</h3>
+Bots are crawling your web pages to help parse your site content, so the relevant information within your site is easily indexed and more readily available to users searching for the content you provide.
+
+Although most bots are harmless and even quite beneficial, you may still want to prevent them from crawling your site (please note, however, that not everyone on the web is using a bot to help index your site). The easiest and quickest way to do this is to use the robots.txt file. This text file contains instructions on how a bot should process your site data.
+
+Important: The robots.txt file must be placed in the top directory of the website host to which it applies. Otherwise, it will have no effect on the ProxyBot behavior.
+
+To stop ProxyBot from crawling your site, add the following rules to your robots.txt file:
+
+To block ProxyBot from crawling your site for a webgraph of links:
+<div class="well">
+User-agent: ProxyBot<br/>
+Disallow: /
+</div>
+
+<h4>Important details:</h4>
+If you have subdomains, you need to place a robots.txt file on each subdomain. Otherwise, ProxyBot will not address any other file in your domain, and will consider that it is allowed to crawl everything on your subdomain.
+
+The robots.txt file must always return an HTTP 200 status code. If a 4xx status code is returned, ProxyBot will assume that no robots.txt exists and there are no crawl restrictions. Returning a 5xx status code for your robots.txt file will prevent ProxyBot from crawling your entire site. Our crawler can handle robots.txt files with a 3xx status code.
+
+Please note that it may take up to one hour or 100 requests for ProxyBot to discover changes made to your robots.txt.
+
+Do not try to block ProxyBot via IP as we do not use any consecutive IP blocks.
+
+<h3 style="color: green">B. Submit online!</h3>
+    <div class="div-search-box col-lg-offset-2 col-lg-8 has-success" align="center">
+
+
+          <form class="x-sform form-group" action="/block/" method="post" accept-charset="utf-8" name="proxy">
+          <div class="input-group" style="margin: 50px 0px 50px 0px;">
+                <input placeholder="Enter domain to block, example: google.com" autocomplete="off" type="text" class="form-control x-kw input-lg" name="domain" onfocus="this.select()"/>
+                <span class="input-group-btn">
+
+                  <button class="btn btn-success input-lg" type="submit" style="font-weight: bold;font-size: 22px;"><span class="glyphicon glyphicon-bell"></span> Submit</button>
+                </span>
+          </div>
+          </form>
+
+    </div>
+
+
+</div>
+
+
+{% include 'foot.html' %}
+</body>
+</html>

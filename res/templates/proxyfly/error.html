@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+{% include 'head.html' %}
+<title>Free web proxy Service - ProxyFly Error!</title>
+</head>
+<body>
+{% include 'navbar.html' %}
+
+
+<div class="container">
+    <div class="div-search-box col-lg-offset-2 col-lg-8 has-warning" align="center">
+
+          <div style="font-size:64px">
+            <span  style="color:#4285f4">P</span><span  style="color:#e94235">r</span><span  style="color:#fbbc03">o</span><span  style="color:#4285f4">x</span><span  style="color:#e94235">y</span><span  style="color:green">Fly</span>
+              </a>
+          </div>
+          <h1 style="font-size: 14px;color: #858e85;">ProxyFly - Free web proxy Service, hide your IP / encrypt your connection. </h1></font><br/>
+
+          <form class="x-sform form-group" action="/ee/" method="post" accept-charset="utf-8" name="proxy">
+          <div class="input-group" style="margin: 50px 0px 50px 0px;">
+                <input placeholder="Enter an URL..." autocomplete="off" type="text" class="form-control x-kw input-lg" name="url" onfocus="this.select()" value="{{url}}"/>
+                <span class="input-group-btn">
+
+                  <button class="btn btn-warning input-lg" type="submit" style="font-weight: bold;font-size: 22px;"><span class="glyphicon glyphicon-search"></span> GO! </button>
+                </span>
+
+          </div>
+          </form>
+
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          {{msg}}
+        </div>
+    </div>
+
+
+</div>
+
+
+{% include 'foot.html' %}
+</body>
+</html>
